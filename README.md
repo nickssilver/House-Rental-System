@@ -59,7 +59,7 @@ Number of Entries
 
 * Monthly Payments Report
 * Rental Balances Report
-6.User
+## User
 
 * Show Entries
 * Number of Entries
@@ -67,8 +67,8 @@ Number of Entries
 * Username
 * Search
 * Edit
-Delete
-Update
-Add New user.
+* Delete
+* Update
+* Add New user.
 # Technogies Used.
 **- Php** **- Ajax** **- Html** **- Css** **- Javascript** **- Boostrap** **- Jquery**
