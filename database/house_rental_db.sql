@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2020 at 07:07 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 27, 2022 at 11:59 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,10 +37,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Duplex'),
-(2, 'Single-Family Home'),
-(3, 'Multi-Family Home'),
-(4, '2-story house');
+(5, 'Bed-sitter'),
+(6, 'Cubes'),
+(7, 'Three- Bedroom'),
+(8, 'Two-Bedroom'),
+(9, 'Single-Room');
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,9 @@ CREATE TABLE `houses` (
 --
 
 INSERT INTO `houses` (`id`, `house_no`, `category_id`, `description`, `price`) VALUES
-(1, '623', 4, 'Sample', 2500);
+(3, '10', 5, 'Spacious-well furnace rooms', 5000),
+(4, '4', 7, 'With free WI-fi connection', 25000),
+(5, '3', 8, 'with a balcony ', 10000);
 
 -- --------------------------------------------------------
 
@@ -83,7 +86,9 @@ CREATE TABLE `payments` (
 
 INSERT INTO `payments` (`id`, `tenant_id`, `amount`, `invoice`, `date_created`) VALUES
 (1, 2, 2500, '123456', '2020-10-26 11:29:35'),
-(2, 2, 7500, '136654', '2020-10-26 11:30:21');
+(2, 2, 7500, '136654', '2020-10-26 11:30:21'),
+(3, 4, 3500, '158956', '2022-02-28 00:01:57'),
+(4, 6, 16000, '15285', '2022-02-28 00:02:35');
 
 -- --------------------------------------------------------
 
@@ -105,7 +110,7 @@ CREATE TABLE `system_settings` (
 --
 
 INSERT INTO `system_settings` (`id`, `name`, `email`, `contact`, `cover_img`, `about_content`) VALUES
-(1, 'House Rental Management System', 'info@sample.comm', '+6948 8542 623', '1603344720_1602738120_pngtree-purple-hd-business-banner-image_5493.jpg', '&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-weight: 400; text-align: justify;&quot;&gt;&amp;nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;');
+(1, 'House Rental Management System', 'kaltuu@gmail.com', '+254 798 285041', '1603344720_1602738120_pngtree-purple-hd-business-banner-image_5493.jpg', '&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-weight: 400; text-align: justify;&quot;&gt;Management system for rental houses&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center; background: transparent; position: relative;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;');
 
 -- --------------------------------------------------------
 
@@ -130,7 +135,11 @@ CREATE TABLE `tenants` (
 --
 
 INSERT INTO `tenants` (`id`, `firstname`, `middlename`, `lastname`, `email`, `contact`, `house_id`, `status`, `date_in`) VALUES
-(2, 'John', 'C', 'Smith', 'jsmith@sample.com', '+18456-5455-55', 1, 1, '2020-07-02');
+(2, 'sil', 'C', 'Nicks', 'silvernicks9@gmail.com', '+254720287104', 4, 0, '2022-01-01'),
+(3, 'Mohamed', '', 'kaltuu', 'kaltuu@gmail.com', '+254 798 285041', 2, 0, '2022-02-27'),
+(4, 'sil', '', 'Nicks', 'silvernicks9@gmail.com', '+254720287104', 3, 1, '2022-01-01'),
+(5, 'Mohamed', '', 'fari', 'fari@gmail.com', '254797412918', 4, 1, '2022-02-01'),
+(6, 'Mohamed', '', 'kaltuu', 'kaltuu@gmail.com', '+254 798 285041', 5, 1, '2022-03-01');
 
 -- --------------------------------------------------------
 
@@ -201,19 +210,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `houses`
 --
 ALTER TABLE `houses`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `system_settings`
@@ -225,7 +234,7 @@ ALTER TABLE `system_settings`
 -- AUTO_INCREMENT for table `tenants`
 --
 ALTER TABLE `tenants`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
